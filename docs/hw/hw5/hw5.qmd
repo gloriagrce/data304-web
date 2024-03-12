@@ -3,11 +3,8 @@ title: "Homework 5"
 format: html
 editor: visual
 jupyter: python3
----
-
-```{yaml}
 embed-resources: true
-```
+---
 
 ## Long vs Wide Exercise
 
