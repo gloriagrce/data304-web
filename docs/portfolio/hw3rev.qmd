@@ -50,7 +50,7 @@ d.  Include a paragraph that tells the story of your graphic.
     chart
     ```
 
-    The graph visualizes genetic ancestry data of twins across different regions and genetic tests. Each column in the graph represents a pair of twins, with bars grouped by region and colored by the genetic test performed. The heights of the bars represent the genetic values obtained from the tests, such as 23andMe and MyHeritage. By examining the graph, we can observe how the genetic ancestry of the twins varies across different regions, providing insights into the diversity and distribution of genetic traits within twin pairs. The comparison highlights the nuanced differences in genetic ancestry between twins and offers a fascinating glimpse into the complexities of human genetics and inheritance patterns across diverse geographic regions.
+    The graph visualizes genetic ancestry data of twins across different regions and genetic tests. Each column in the graph represents a pair of twins, with bars grouped by region and colored by the genetic test performed. The heights of the bars represent the genetic values obtained from the tests, such as 23andMe and MyHeritage. From the graph, I want the audience to see how the genetic ancestry of the twins varies across different regions, providing insights into the diversity and distribution of genetic traits within twin pairs. It offers a fascinating glimpse into the complexities of human genetics and inheritance patterns across diverse geographic regions.
 
     ## Kit Comparison
 
@@ -70,4 +70,4 @@ d.  Include a paragraph that tells the story of your graphic.
     chart
     ```
 
-The graph presents a comparison of genetic testing kits across different regions, focusing on the ancestry variable. Each bar in the graph represents the genetic ancestry value obtained from the respective test kit, grouped by the type of test performed (23andMe and MyHeritage) and arranged by region. The y-axis indicates the ancestry value, providing insights into the genetic diversity present in each region. By examining the graph, we can observe how the genetic ancestry values vary across different regions and understand the distribution of genetic traits within populations. The comparison highlights the importance of genetic testing in exploring ancestry and understanding human genetic diversity across geographical regions.
+The graph presents a comparison of genetic testing kits across different regions, focusing on the ancestry variable. Each bar in the graph represents the genetic ancestry value obtained from the respective test kit, grouped by the type of test performed (23andMe and MyHeritage) and arranged by region. The y-axis indicates the ancestry value, providing insights into the genetic diversity present in each region. I want to tell the story of the graph and show how the genetic ancestry values vary across different regions with the comparison of the kits.

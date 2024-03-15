@@ -10,6 +10,8 @@ I wasn't able to do exercise 3 because my permission got denied and couldn't acc
 
 [Exercise 5](Ex5.html)
 
+[Exercise 6](Ex6.html)
+
 ## Data
 
 [Genetics](https://calvin-data304.netlify.app/data/twins-genetics-wide.json)
@@ -29,3 +31,5 @@ I wasn't able to do exercise 3 because my permission got denied and couldn't acc
 [Exercise 4](Ex4.qmd)
 
 [Exercise 5](Ex5.qmd)
+
+[Exercise 6](Ex6.qmd)
