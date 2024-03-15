@@ -1,0 +1,31 @@
+## Exercise
+
+[HW3 Revision](hw3rev.html)
+
+[HW 7 Revision](hw7rev.html)
+
+I wasn't able to do exercise 3 because my permission got denied and couldn't access any dataset.
+
+[Exercise 4](Ex4.html)
+
+[Exercise 5](Ex5.html)
+
+## Data
+
+[Genetics](https://calvin-data304.netlify.app/data/twins-genetics-wide.json)
+
+[Gas Prices](https://calvin-data304.netlify.app/data/pump_price_for_gasoline_us_per_liter.csv)
+
+[Country Codes](https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv)
+
+[Weather](https://cdn.jsdelivr.net/npm/vega-datasets@1.29.0/data/weather.json)
+
+## Course Documents
+
+[HW3 Revision](hw3rev.qmd)
+
+[HW 7 Revision](hw7rev.qmd)
+
+[Exercise 4](Ex4.qmd)
+
+[Exercise 5](Ex5.qmd)

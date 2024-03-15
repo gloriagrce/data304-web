@@ -1,0 +1,51 @@
+---
+title: "Homework 7 Revision"
+format: 
+  html:
+    theme: sketchy
+editor: visual
+jupyter: python3
+---
+
+
+```{python}
+import pandas as pd
+import altair as alt
+import requests
+
+gas_price_url = "https://calvin-data304.netlify.app/data/pump_price_for_gasoline_us_per_liter.csv"
+gas_price_data = pd.read_csv(gas_price_url)
+
+country_code_url = "https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv"
+country_code_data = pd.read_csv(country_code_url)
+
+melted_gas_price_data = pd.melt(gas_price_data, id_vars=['country'], var_name='Year', value_name='Gas_Price')
+
+merged_data = pd.merge(melted_gas_price_data, country_code_data[['name', 'alpha-3', 'region']], left_on='country', right_on='name')
+
+```
+
+```{python}
+chart = alt.Chart(merged_data).mark_bar().encode(
+    x=alt.X('Year:O', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('Gas_Price:Q', title='Gas Price (USD per Liter)'),
+    color='region',
+    tooltip=['region', 'Year', alt.Tooltip('mean(Gas_Price)', format='.2f')]
+).properties(
+    title='Gas Price Comparison by Region'
+)
+
+chart.configure_axis(
+    labelFontSize=10,
+    titleFontSize=12
+).configure_title(
+    fontSize=14
+).configure_legend(
+    titleFontSize=12,
+    labelFontSize=10
+).interactive(
+).properties(
+  width=800
+)
+```
+

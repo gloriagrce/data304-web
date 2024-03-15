@@ -1,0 +1,181 @@
+---
+title: "Exercise 4"
+format: html
+editor: visual
+jupyter: python3
+---
+
+```{python}
+import pandas as pd
+import altair as alt
+
+
+data = [
+    {"day": "M", "record": {"high": 62, "low": 15}, "normal": {"high": 50, "low": 38}, "actual": {"high": 48, "low": 36}, "id": 0},
+    {"day": "T", "record": {"high": 62, "low": 23}, "normal": {"high": 50, "low": 38}, "actual": {"high": 50, "low": 40}, "id": 1},
+    {"day": "W", "record": {"high": 61, "low": 20}, "normal": {"high": 50, "low": 38}, "actual": {"high": 55, "low": 36}, "id": 2},
+    {"day": "Th", "record": {"high": 67, "low": 21}, "normal": {"high": 50, "low": 38}, "actual": {"high": 51, "low": 33}, "id": 3},
+    {"day": "F", "record": {"high": 61, "low": 23}, "normal": {"high": 50, "low": 38}, "actual": {"high": 50, "low": 30}, "id": 4},
+    {"day": "Sa", "record": {"high": 67, "low": 20}, "normal": {"high": 50, "low": 38}, "forecast": {"high": {"high": 53, "low": 49}, "low": {"high": 40, "low": 35}}, "id": 5},
+    {"day": "S", "record": {"high": 63, "low": 23}, "normal": {"high": 50, "low": 39}, "forecast": {"high": {"high": 55, "low": 49}, "low": {"high": 42, "low": 37}}, "id": 6},
+    {"day": "M", "record": {"high": 61, "low": 26}, "normal": {"high": 51, "low": 39}, "forecast": {"high": {"high": 53, "low": 49}, "low": {"high": 43, "low": 40}}, "id": 7},
+    {"day": "T", "record": {"high": 61, "low": 24}, "normal": {"high": 51, "low": 39}, "forecast": {"high": {"high": 52, "low": 46}, "low": {"high": 44, "low": 40}}, "id": 8},
+    {"day": "W", "record": {"high": 63, "low": 20}, "normal": {"high": 51, "low": 39}, "forecast": {"high": {"high": 53, "low": 46}, "low": {"high": 43, "low": 38}}, "id": 9}
+]
+
+days = []
+high_temps = []
+low_temps = []
+
+for entry in data:
+    day = entry['day']
+    if 'actual' in entry:
+        high_temp = entry['actual']['high']
+        low_temp = entry['actual']['low']
+    elif 'forecast' in entry:
+        high_temp = entry['forecast']['high']['high']
+        low_temp = entry['forecast']['low']['low']
+    else:
+        continue  
+    
+    days.append(day)
+    high_temps.append(high_temp)
+    low_temps.append(low_temp)
+
+df = pd.DataFrame({
+    'Day': days,
+    'High Temperature': high_temps,
+    'Low Temperature': low_temps
+})
+```
+
+```{python}
+day_order = ["M", "T", "W", "Th", "F", "Sa", "S"]
+day_names = {
+    "M": "Monday",
+    "T": "Tuesday",
+    "W": "Wednesday",
+    "Th": "Thursday",
+    "F": "Friday",
+    "Sa": "Saturday",
+    "S": "Sunday"
+}
+
+df['Day'] = pd.Categorical(df['Day'], categories=day_order, ordered=True)
+df['Day'] = df['Day'].map(day_names)
+
+```
+
+```{python}
+high_temp_chart = alt.Chart(df).mark_point(color = 'blue').encode(
+    x=alt.X('Day', title='Day of the Week', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('High Temperature', title='Temperature (°F)'),
+    tooltip=['Day', 'High Temperature']
+)
+
+low_temp_chart = alt.Chart(df).mark_point(color = 'pink').encode(
+    x=alt.X('Day', title='Day of the Week', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('Low Temperature', title='Temperature (°F)'),
+    tooltip=['Day', 'Low Temperature']
+)
+
+high_temp_text = high_temp_chart.mark_text(align='left', baseline='middle', dx=5, dy=-5).encode(
+    text='High Temperature'
+)
+
+low_temp_text = low_temp_chart.mark_text(align='left', baseline='middle', dx=5, dy=5).encode(
+    text='Low Temperature'
+)
+
+combined_chart = alt.layer(high_temp_chart, high_temp_text, low_temp_chart, low_temp_text).resolve_scale(
+    x='shared'
+).properties(
+    width=700,
+    title= 'Weather Conditions Throughout the Week'
+)
+
+
+combined_chart
+
+```
+
+```{python}
+high_temp_chart = alt.Chart(df).mark_line(color='blue').encode(
+    x=alt.X('Day', title='Day of the Week', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('High Temperature', title='Temperature (°F)'),
+    tooltip=['Day', 'High Temperature']
+).properties(
+    width=350,  # Set the width for each chart
+    height=200  # Set the height for each chart
+)
+
+low_temp_chart = alt.Chart(df).mark_line(color='pink').encode(
+    x=alt.X('Day', title='Day of the Week', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('Low Temperature', title='Temperature (°F)'),
+    tooltip=['Day', 'Low Temperature']
+).properties(
+    width=350,  # Set the width for each chart
+    height=200  # Set the height for each chart
+)
+
+combined_chart = alt.hconcat(high_temp_chart, low_temp_chart).resolve_scale(
+    x='shared'
+).properties(
+    title= 'Weather Conditions Throughout the Week'
+)
+
+combined_chart
+
+```
+
+
+## Choices
+
+The reason I choose the choices which led to this graphic, is that I tried my best to show a clear message by having a point that represent the high and low temperatures for each day of the week. 
+
+Another thing that I consider is the color combination, I wanted something that not only look good but also is easy to distinguished. 
+
+I also takes quite some time to focus my attention towards the labels of the axis, title, and scale. The data first come with labels for the day as M, T, W, T, F, S, S which I found not as helpful because it would be hard to differentiate between Tuesday and Thursday but also to differentiate between Saturday and Sunday.
+
+
+## Goals
+
+What I actually trying to achieve is graph like this one: where there is a line that connects between the two dot. But a lot of things that I tried makes the end of the monday line to Tuesday where all the lines become one.
+
+```{python}
+high_temp_chart = alt.Chart(df).mark_line().encode(
+    x=alt.X('Day', title='Day of the Week', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('High Temperature', title='High Temperature (°F)'),
+    color=alt.Color('Day'),
+    tooltip=['Day', 'High Temperature']
+)
+
+low_temp_chart = alt.Chart(df).mark_line().encode(
+    x=alt.X('Day', title='Day of the Week', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('Low Temperature', title='Low Temperature (°F)'),
+    color=alt.Color('Day'),
+    tooltip=['Day', 'Low Temperature']
+)
+
+high_temp_text = high_temp_chart.mark_text(align='left', baseline='middle', dx=5, dy=-5).encode(
+    text='High Temperature'
+)
+
+low_temp_text = low_temp_chart.mark_text(align='left', baseline='middle', dx=5, dy=5).encode(
+    text='Low Temperature'
+)
+
+combined_chart = alt.layer(high_temp_chart, high_temp_text, low_temp_chart, low_temp_text).resolve_scale(
+    x='shared'
+).properties(
+    width=700 
+)
+
+combined_chart
+
+```
+
+
+
+
+

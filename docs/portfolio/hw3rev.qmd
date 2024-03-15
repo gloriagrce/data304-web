@@ -1,0 +1,73 @@
+---
+title: "Homework 3 Revision"
+format: 
+  html:
+    theme: minty
+editor: visual
+jupyter: python3
+---
+
+a.  Scroll through the [HW 3 Gallery](https://calvin-data304.netlify.app/hw/hw3-gallery) to see the plots we created at that time. Find an example that has that has something you like about it and explain what you like.
+
+    An example of the genetic kits graphic that I like is the comparing kits made by riley. I think that the comparison was easy to make due to the use of faceting.
+
+b.  Find an example that has somethng you don’t like, and explain what you don’t like about it.
+
+    An example that has something I don't like was the graph that is made by Riley Farmer for the exercise 2.3 graph. The reason why I dislike this example is because of the dual y-axis and how the scale for both is different which makes it difficult to compare.
+
+c.  Now create two graphics, one that helps compare the kits and one that helps compare twins. Give your graphics **good titles** and use other principles of good visualization.
+
+d.  Include a paragraph that tells the story of your graphic.
+
+    ## Twin Comparison
+
+    ```{python}
+    import pandas as pd
+    import altair as alt
+
+    # Load data
+    url = "https://calvin-data304.netlify.app/data/twins-genetics-wide.json"
+    genetics = pd.read_json(url)
+
+    ```
+
+    ```{python}
+    genetics_long = genetics.melt(id_vars=['twin', 'region', 'Ancestry'], var_name='test', value_name='value')
+    ```
+
+    ```{python}
+    chart = alt.Chart(genetics_long).mark_bar().encode(
+        x=alt.X("region:N", title="Region"),
+        y=alt.Y("value:Q", title="Value"),
+        color=alt.Color("test:N", title="Test", legend=None),
+        column=alt.Column("twin:N", title="Twin")
+    ).properties(
+        width=150,
+        height=300,
+        title="Comparison of Genetic Tests Across Regions for Twin Pairs"
+    )
+
+    chart
+    ```
+
+    The graph visualizes genetic ancestry data of twins across different regions and genetic tests. Each column in the graph represents a pair of twins, with bars grouped by region and colored by the genetic test performed. The heights of the bars represent the genetic values obtained from the tests, such as 23andMe and MyHeritage. By examining the graph, we can observe how the genetic ancestry of the twins varies across different regions, providing insights into the diversity and distribution of genetic traits within twin pairs. The comparison highlights the nuanced differences in genetic ancestry between twins and offers a fascinating glimpse into the complexities of human genetics and inheritance patterns across diverse geographic regions.
+
+    ## Kit Comparison
+
+    ```{python}
+
+    chart = alt.Chart(genetics_long).mark_bar().encode(
+        x=alt.X("region:N", title="Region"),
+        y=alt.Y("Ancestry:Q", title="Ancestry"),
+        color=alt.Color("test:N", title="Test", legend=None),
+        column=alt.Column("test:N", title="Test")
+    ).properties(
+        width=150,
+        height=300,
+        title="Comparison of Genetic Testing Kits Across Regions (Ancestry)"
+    )
+
+    chart
+    ```
+
+The graph presents a comparison of genetic testing kits across different regions, focusing on the ancestry variable. Each bar in the graph represents the genetic ancestry value obtained from the respective test kit, grouped by the type of test performed (23andMe and MyHeritage) and arranged by region. The y-axis indicates the ancestry value, providing insights into the genetic diversity present in each region. By examining the graph, we can observe how the genetic ancestry values vary across different regions and understand the distribution of genetic traits within populations. The comparison highlights the importance of genetic testing in exploring ancestry and understanding human genetic diversity across geographical regions.

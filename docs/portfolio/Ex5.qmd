@@ -1,0 +1,32 @@
+---
+title: "Exercise 5"
+format: html
+editor: visual
+jupyter: python3
+---
+
+identify a place where you used
+
+a.  an encoding channel other than x or y.
+
+    I use encoding channel almost on all my graph.
+
+b.  facets
+
+    I used facets on my homework 3 revision for the kit comparison.
+
+c.  layers
+
+    I use layers on my exercise 4 graph.
+
+d.  concatenation
+
+    I use layers on my exercise 4 graph.
+
+e.  non-default configuration of a channel’s scale or guide
+
+    I use layers on my exercise 4 graph. Firstly I had to change the name of the days from initials to actually the day of the week. Then, I have to sort it so it does not show alphabetically.
+
+f.  interaction (tooltips, panning/zooming, brushing, etc.)
+
+    I use interaction in my hw7 revision.

@@ -1,0 +1,21 @@
+---
+title: "Exercise 6"
+format: 
+  html:
+    theme: minty
+editor: visual
+jupyter: python3
+---
+
+a.  Cite 2 or 3 specific examples in the graphics in your portfolio where you used a feature of Altair that we did not learn in class. This might be using a new kind of mark or transform, or a way to customize a feature of the graphic, or a way to use interaction, or…
+
+    1.  The first example that I did different is the formatting the axis label based on it's angle.
+
+    2.  The second example that I did was sorting the days differently from class which I specifically order : day_order = \["M", "T", "W", "Th", "F", "Sa", "S"\]
+
+        University of Washington Interactive Data Lab. "Altair: Scales, Axes, and Legends." UW Interactive Data Lab Visualization Curriculum, <https://uwdata.github.io/visualization-curriculum/altair_scales_axes_legends.html>.
+
+b.  You will also want to keep learning about principles of good graphics design. Cite 2 or 3 specific examples where you followed the advice in one of these resources. For the Knaflic book, provide specific page numbers. For the Wilke book provide at least section numbers. (Note: each section in that book has a URL which you could inlcude as a link.)
+
+    1.  I followed Wilke ([2019](https://calvin-data304.netlify.app/hw/portfolio#ref-Wilke:2019)) which emphasizes the necessity of titles for axes and legends to explain the data values and their mapping to plot aesthetics Which is why I carefully put my attention in that.
+    2.  I followed C. N. Knaflic ([2015](https://calvin-data304.netlify.app/hw/portfolio#ref-Knaflic:2015)) advice to make sure my audience will be able to put their attention to my graphic by maximizing the use of color, size, and other encodings.
