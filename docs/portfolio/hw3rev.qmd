@@ -27,47 +27,45 @@ d.  Include a paragraph that tells the story of your graphic.
 
     # Load data
     url = "https://calvin-data304.netlify.app/data/twins-genetics-wide.json"
-    genetics = pd.read_json(url)
-
+    url2 = "https://calvin-data304.netlify.app/data/twins-genetics-long.json"
+    genetics_wide = pd.read_json(url)
+    genetics_long = pd.read_json(url2)
     ```
 
     ```{python}
-    genetics_long = genetics.melt(id_vars=['twin', 'region', 'Ancestry'], var_name='test', value_name='value')
-    ```
-
-    ```{python}
-    chart = alt.Chart(genetics_long).mark_bar().encode(
-        x=alt.X("region:N", title="Region"),
-        y=alt.Y("value:Q", title="Value"),
-        color=alt.Color("test:N", title="Test", legend=None),
-        column=alt.Column("twin:N", title="Twin")
+    chart = alt.Chart(genetics_long).transform_filter(
+        alt.FieldEqualPredicate(field='kit', equal='Ancestry')).mark_bar().encode(
+        x=alt.X("id:N", title="Twin"),
+        y=alt.Y("genetic share:Q", title="Genetic Share", axis=alt.Axis(format='%')),
+        color=alt.Color("region:N", title="ID").scale(scheme = "dark2"),
+        column=alt.Column("pair:N", title="Pair")
     ).properties(
-        width=150,
+        width=80,
         height=300,
-        title="Comparison of Genetic Tests Across Regions for Twin Pairs"
+        title="Comparison of Genetic Share for Twin Pairs using Ancestry kit"
     )
 
     chart
     ```
 
-    The graph visualizes genetic ancestry data of twins across different regions and genetic tests. Each column in the graph represents a pair of twins, with bars grouped by region and colored by the genetic test performed. The heights of the bars represent the genetic values obtained from the tests, such as 23andMe and MyHeritage. From the graph, I want the audience to see how the genetic ancestry of the twins varies across different regions, providing insights into the diversity and distribution of genetic traits within twin pairs. It offers a fascinating glimpse into the complexities of human genetics and inheritance patterns across diverse geographic regions.
+    The graph visualizes genetic share of a total of six pairs of twin which shows their region ancestry data percentage. Each column in the graph represents a pair of twins, with bars grouped and colored by the region. From the graph, a conclusion can be taken that for most of these pairs, to be specific, pair 1, 3, and 5 has identical result for both A and B twin. Whereas the rest of them has a slight different percentages that is present.
 
     ## Kit Comparison
 
-    ```{python}
+```{python}
+chart = alt.Chart(genetics_long).mark_bar().encode(
+    x=alt.X("id:N", title="Twin"),
+    y=alt.Y("genetic share:Q", title="Genetic Share", axis=alt.Axis(format='%')),
+    color=alt.Color("region:N", title="region").scale(scheme = "set1"),
+    column=alt.Column("pair:N", title="Pair"),
+    row=alt.Row("kit", title="Kit")
+).properties(
+    width=80,
+    height=300,
+    title="Comparison of Genetic Share for Twin Pairs using Ancestry kit"
+)
 
-    chart = alt.Chart(genetics_long).mark_bar().encode(
-        x=alt.X("region:N", title="Region"),
-        y=alt.Y("Ancestry:Q", title="Ancestry"),
-        color=alt.Color("test:N", title="Test", legend=None),
-        column=alt.Column("test:N", title="Test")
-    ).properties(
-        width=150,
-        height=300,
-        title="Comparison of Genetic Testing Kits Across Regions (Ancestry)"
-    )
+chart
+```
 
-    chart
-    ```
-
-The graph presents a comparison of genetic testing kits across different regions, focusing on the ancestry variable. Each bar in the graph represents the genetic ancestry value obtained from the respective test kit, grouped by the type of test performed (23andMe and MyHeritage) and arranged by region. The y-axis indicates the ancestry value, providing insights into the genetic diversity present in each region. I want to tell the story of the graph and show how the genetic ancestry values vary across different regions with the comparison of the kits.
+The graph presents a comparison of genetic share test result of six pairs of twin that uses three different kits including 23andMe, Ancestry, and MyHeritage. The graph colored the genetic each pair have across different regions. Based on this graph, I want it to tell a story where it can show how different kits can result in different region percentages. For example, just from the first pair of twins alone, not only that MyHeritage differs the percentage of SE Europe in the pair but pair A and pair B is quite distinctive. In addition to this, this comparison of kits can be helpful to see which might be most accurate. It was quite obvious that Ancestry is the reliable option based on the total of genetic share that sums up to 100%.

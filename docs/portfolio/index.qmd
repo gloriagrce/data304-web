@@ -4,7 +4,7 @@
 
 [HW 7 Revision](hw7rev.html)
 
-I wasn't able to do exercise 3 because my permission got denied and couldn't access any dataset.
+[Exercise 3](Ex3.html)
 
 [Exercise 4](Ex4.html)
 
@@ -20,13 +20,17 @@ I wasn't able to do exercise 3 because my permission got denied and couldn't acc
 
 [Country Codes](https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv)
 
-[Weather](https://cdn.jsdelivr.net/npm/vega-datasets@1.29.0/data/weather.json)
+[Tanzania](tanzania.html)
+
+[Obesity](https://cdn.jsdelivr.net/npm/vega-datasets@2.8.1/data/obesity.json)
 
 ## Course Documents
 
 [HW3 Revision](hw3rev.qmd)
 
 [HW 7 Revision](hw7rev.qmd)
+
+[Exercise 3](Ex3.qmd)
 
 [Exercise 4](Ex4.qmd)
 

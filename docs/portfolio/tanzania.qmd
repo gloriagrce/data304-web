@@ -1,0 +1,44 @@
+---
+
+---
+
+```{python}
+data = [
+    {
+        "survey_year": "2016",
+        "total_fertility": 5.2,
+        "modern_contraception_use": 38.4,
+        "unmet_need_family_planning": 22.1
+    },
+    {
+        "survey_year": "2010",
+        "total_fertility": 5.4,
+        "modern_contraception_use": 23.6,
+        "unmet_need_family_planning": 22.3
+    },
+    {
+        "survey_year": "2005",
+        "total_fertility": 5.7,
+        "modern_contraception_use": 17.6,
+        "unmet_need_family_planning": 24.3
+    },
+    {
+        "survey_year": "1999",
+        "total_fertility": 5.6,
+        "modern_contraception_use": 15.6,
+        "unmet_need_family_planning": 22.3
+    },
+    {
+        "survey_year": "1996",
+        "total_fertility": 5.8,
+        "modern_contraception_use": 11.7,
+        "unmet_need_family_planning": 26.0
+    },
+    {
+        "survey_year": "1992",
+        "total_fertility": 6.2,
+        "modern_contraception_use": 5.9,
+        "unmet_need_family_planning": 27.8
+    }
+]
+```

@@ -13,20 +13,20 @@ a.  an encoding channel other than x or y.
 
 b.  facets
 
-    I used facets on my homework 3 revision for the kit comparison.
+    I used facets on my homework 3 revision for the kit and twin comparison.
 
 c.  layers
 
-    I use layers on my exercise 4 graph.
+    I use layers on my homework 7 revision graph.
 
 d.  concatenation
 
-    I use layers on my exercise 4 graph.
+    I use layers on my exercise 3 graph.
 
 e.  non-default configuration of a channel’s scale or guide
 
-    I use layers on my exercise 4 graph. Firstly I had to change the name of the days from initials to actually the day of the week. Then, I have to sort it so it does not show alphabetically.
+    I use non default scale on my homework 3 revision where I had to change the y scale to percentages.
 
 f.  interaction (tooltips, panning/zooming, brushing, etc.)
 
-    I use interaction in my hw7 revision.
+    I use interaction in my exercise 4.

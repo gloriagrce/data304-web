@@ -7,7 +7,6 @@ editor: visual
 jupyter: python3
 ---
 
-
 ```{python}
 import pandas as pd
 import altair as alt
@@ -26,13 +25,17 @@ merged_data = pd.merge(melted_gas_price_data, country_code_data[['name', 'alpha-
 ```
 
 ```{python}
-chart = alt.Chart(merged_data).mark_bar().encode(
+gas = merged_data.dropna() 
+```
+
+```{python}
+chart = alt.Chart(gas).mark_line().encode(
     x=alt.X('Year:O', axis=alt.Axis(labelAngle=0)),
-    y=alt.Y('Gas_Price:Q', title='Gas Price (USD per Liter)'),
-    color='region',
+    y=alt.Y('mean(Gas_Price):Q', title='Gas Price (USD per Liter)'),
+    color=alt.Color('region:N'),
     tooltip=['region', 'Year', alt.Tooltip('mean(Gas_Price)', format='.2f')]
 ).properties(
-    title='Gas Price Comparison by Region'
+    title='Average Gas Price Throughout the Years Comparison by Region'
 )
 
 chart.configure_axis(
@@ -48,4 +51,3 @@ chart.configure_axis(
   width=800
 )
 ```
-

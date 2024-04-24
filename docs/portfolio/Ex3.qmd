@@ -1,0 +1,97 @@
+---
+title: "Exercise 3"
+format: html
+editor: visual
+jupyter: python3
+---
+
+a.  Enter the data into Excel, a CSV, or JSON file. You will have some decisions to make about things like variable names, etc. Be sure to include the data set you create on your portfolio website.
+
+```{python}
+import pandas as pd
+import altair as alt
+
+
+data = [
+    {
+        "survey_year": "2016",
+        "total_fertility": 5.2,
+        "modern_contraception_use": 38.4,
+        "unmet_need_family_planning": 22.1
+    },
+    {
+        "survey_year": "2010",
+        "total_fertility": 5.4,
+        "modern_contraception_use": 23.6,
+        "unmet_need_family_planning": 22.3
+    },
+    {
+        "survey_year": "2005",
+        "total_fertility": 5.7,
+        "modern_contraception_use": 17.6,
+        "unmet_need_family_planning": 24.3
+    },
+    {
+        "survey_year": "1999",
+        "total_fertility": 5.6,
+        "modern_contraception_use": 15.6,
+        "unmet_need_family_planning": 22.3
+    },
+    {
+        "survey_year": "1996",
+        "total_fertility": 5.8,
+        "modern_contraception_use": 11.7,
+        "unmet_need_family_planning": 26.0
+    },
+    {
+        "survey_year": "1992",
+        "total_fertility": 6.2,
+        "modern_contraception_use": 5.9,
+        "unmet_need_family_planning": 27.8
+    }
+]
+
+
+tanzania = pd.DataFrame(data)
+
+
+
+```
+
+b.  Use these data to create a visualization that tells a story. Notice that some of the surveys were conducted all in one year and some spanned two calendar years. How will you deal with that in your visualization?
+
+```{python}
+line_plot = alt.Chart(tanzania).mark_line(strokeWidth=3).encode(
+    x=alt.X('survey_year', title='Survey Year', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('total_fertility', title='Total Fertility Rate'),
+    color=alt.value('pink')
+).properties(
+    title='Total Fertility Rate Over Time',
+    width=200 
+)
+
+scatter_modern_contraception = alt.Chart(tanzania).mark_circle().encode(
+    x=alt.X('total_fertility', title='Total Fertility Rate'),
+    y=alt.Y('modern_contraception_use', title='Modern Contraception Use (%)'),
+    color=alt.value('darkblue')
+).properties(
+    title='Correlation of Fertility Rate and Modern Contraception Use'
+)
+
+scatter_unmet_need = alt.Chart(tanzania).mark_circle().encode(
+    x=alt.X('total_fertility', title='Total Fertility Rate'),
+    y=alt.Y('unmet_need_family_planning', title='Unmet Need for Family Planning (%)'),
+    color=alt.value('skyblue')
+).properties(
+    title='Correlation of Fertility Rate and Family Planning Needs'
+)
+
+
+combined_plot = alt.concat(line_plot, scatter_modern_contraception, scatter_unmet_need, spacing=20)
+
+combined_plot
+```
+
+c.  Write a few sentences explaining the story told.
+
+The “Total Fertility Rate Over Time” graph shows a steady decline in fertility rates from about 6 children per woman in 1992 to just above 4 children per woman by 2016. The “Total Fertility Rate vs Modern Contraception Use” scatter plot suggests a correlation between the increase in modern contraception use and the decrease in total fertility rates. The third scatter plot shows a positive correlation between the Total Fertility Rate and the Unmet Need for Family Planning. As the fertility rate increases, there is a noticeable rise in the unmet need for family planning services. This suggests that in areas with higher birth rates, there may be a greater demand for, but less access to, effective family planning methods. The plot combined illustrate how family planning and contraception have likely played a role in lowering fertility rates over the surveyed years.
