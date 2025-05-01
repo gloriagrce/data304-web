@@ -1,12 +1,12 @@
-## Exercise
+## Data Exercises
 
-[HW3 Revision](hw3rev.html)
+[Genetics Share Kits Comparison](hw3rev.html)
 
-[HW 7 Revision](hw7rev.html)
+[Average Gas Prices Throughout the Years by Region](hw7rev.html)
 
-[Exercise 3](Ex3.html)
+[Fertility Rate](Ex3.html)
 
-[Exercise 4](Ex4.html)
+[Obesity Rates Across US States](Ex4.html)
 
 [Exercise 5](Ex5.html)
 
@@ -24,15 +24,15 @@
 
 [Obesity](https://cdn.jsdelivr.net/npm/vega-datasets@2.8.1/data/obesity.json)
 
-## Course Documents
+## Codes Documents
 
-[HW3 Revision](hw3rev.qmd)
+[Genetics Share Kits Comparison](hw3rev.qmd)
 
 [HW 7 Revision](hw7rev.qmd)
 
-[Exercise 3](Ex3.qmd)
+[Fertility Rate](Ex3.qmd)
 
-[Exercise 4](Ex4.qmd)
+[Obesity Rates Across US States](Ex4.qmd)
 
 [Exercise 5](Ex5.qmd)
 
