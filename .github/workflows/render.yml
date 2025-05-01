@@ -1,4 +1,4 @@
-name: Render Quarto Site
+name: Render Quarto Website
 
 on:
   push:
@@ -9,11 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: latest
+
       - name: Render site
         run: quarto render
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
